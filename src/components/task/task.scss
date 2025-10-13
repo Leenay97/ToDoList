@@ -1,0 +1,95 @@
+.task {
+    background-color: rgba(255, 255, 255, 0.658);
+    padding: 20px;
+    padding-right: 80px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    cursor: pointer;
+
+    &__name {
+        font-size: 18px;
+        font-weight: bold;
+        color: rgba(68, 38, 111, 0.947);
+    }
+
+    &__content {
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+        visibility: hidden;
+
+        &.open {
+            max-height: 800px;
+            transition: all 0.3s ease-in-out;
+            visibility: visible;
+        }
+    }
+
+    &__buttons {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        gap: 5px;
+
+        button {
+            border: 0;
+
+
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 40px;
+            width: 40px;
+            border-radius: 20px;
+
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background-color: rgba(77, 46, 83, 0.23);
+            }
+        }
+    }
+
+    &__open-btn {
+        background-image: url('../../assets/img/arrow.png');
+
+        &.active {
+            transform: rotateZ(180deg);
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+    &__edit-btn {
+        background-image: url('../../assets/img/edit.png');
+
+    }
+
+    &__complete-btn {
+        background-image: url('../../assets/img/complete.png');
+
+    }
+
+    &__deadline {
+        opacity: 0.8;
+        font-size: 14px;
+    }
+
+    &__menu {
+        position: absolute;
+        right: 100px;
+        top: 20px;
+        font-size: 14px;
+        list-style-type: none;
+
+        li {
+            padding: 2px 0;
+            cursor: pointer;
+        }
+    }
+}

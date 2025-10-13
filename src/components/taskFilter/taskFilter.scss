@@ -1,0 +1,25 @@
+.task-filter {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    user-select: none;
+
+    &__option {
+        padding: 5px 10px;
+        border: 1px solid rgba(69, 100, 211, 0.248);
+        cursor: pointer;
+
+        &:first-child {
+            border-radius: 5px 0 0 5px;
+        }
+
+        &:last-child {
+            border-radius: 0 5px 5px 0;
+        }
+
+        &.active {
+            background-color: rgba(255, 255, 255, 0.658);
+            transition: all 0.3s ease;
+        }
+    }
+}

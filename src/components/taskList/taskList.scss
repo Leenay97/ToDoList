@@ -1,0 +1,17 @@
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    &__create-btn {
+        background-color: rgba(255, 255, 255, 0.658);
+        width: fit-content;
+        padding: 15px 20px;
+        border: 0;
+        border-radius: 10px;
+        font-weight: bold;
+        font-size: 18px;
+        color: rgba(91, 68, 143, 0.873);
+        align-self: flex-end;
+    }
+}
