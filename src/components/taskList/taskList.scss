@@ -2,16 +2,42 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    overflow-y: scroll;
+    padding-right: 5px;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f168;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #b6b6b678;
+        border-radius: 4px;
+        transition: background 0.2s ease;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #8b8b8b61;
+    }
 
     &__create-btn {
-        background-color: rgba(255, 255, 255, 0.658);
+        background-color: var(--light);
         width: fit-content;
         padding: 15px 20px;
         border: 0;
         border-radius: 10px;
         font-weight: bold;
-        font-size: 18px;
-        color: rgba(91, 68, 143, 0.873);
+        font-size: 14px;
+        color: var(--darker);
         align-self: flex-end;
+    }
+
+    &__counter {
+        color: var(--light);
+        padding: 5px 10px;
     }
 }

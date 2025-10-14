@@ -30,12 +30,17 @@
         padding: 10px 10px;
         border-radius: 5px;
         min-width: 100%;
+        color: var(--darker);
+
+        &::placeholder {
+            color: var(--dark);
+        }
     }
 
     input {
         font-size: 18px;
         font-weight: bold;
-        color: rgba(68, 38, 111, 0.947);
+
     }
 
     label {
@@ -43,7 +48,7 @@
     }
 
     textarea {
-        background-color: rgba(69, 100, 211, 0.138);
+        background-color: var(--lighter);
         resize: none;
         font-size: 14px;
     }
@@ -51,8 +56,16 @@
     button {
         padding: 10px 10px;
         border-radius: 5px;
-        background-color: rgba(69, 100, 211, 0.248);
+        background-color: var(--dark);
         font-size: 18px;
+        font-weight: bold;
+        color: var(--light);
 
+    }
+
+    .error {
+        color: rgb(232, 44, 44);
+        font-size: 14px;
+        margin-bottom: 10px;
     }
 }

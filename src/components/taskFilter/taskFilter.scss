@@ -6,8 +6,9 @@
 
     &__option {
         padding: 5px 10px;
-        border: 1px solid rgba(69, 100, 211, 0.248);
+        border: 1px solid var(--light);
         cursor: pointer;
+        color: var(--light);
 
         &:first-child {
             border-radius: 5px 0 0 5px;
@@ -18,8 +19,9 @@
         }
 
         &.active {
-            background-color: rgba(255, 255, 255, 0.658);
+            background-color: var(--light);
             transition: all 0.3s ease;
+            color: var(--dark);
         }
     }
 }
