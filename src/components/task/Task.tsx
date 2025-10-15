@@ -57,7 +57,7 @@ const Task = ({ id, name, content, deadline, status, onComplete, onDelete, onEdi
         )
     }
     return (
-        <div className="task" onClick={(e) => handleToggleContent(e)}>
+        <div className={`task ${status === 'completed' ? 'completed' : ''}`} onClick={(e) => handleToggleContent(e)}>
             <div className="task__name">{name}</div>
             <div className={`task__content ${isContentOpen ? 'open' : ''}`}>{content}</div>
             <div className="task__deadline">До {formattedDeadline}</div>

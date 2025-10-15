@@ -54,7 +54,7 @@ const CreateTaskForm = ({ createTask, closeForm }: TypeCreateTaskFormProps) => {
         setError('')
     }, [name])
 
-    const root = document.querySelector('#root');
+    const root = document.querySelector('#root') as HTMLElement | null;;
     if (!root) return null;
 
     return createPortal(

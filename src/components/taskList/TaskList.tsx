@@ -1,5 +1,4 @@
-import React, { type ChangeEvent } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import TaskFilter from "../taskFilter/TaskFilter";
 import CreateTaskForm from "../createTaskForm/CreateTaskForm";
 import Task from "../task/Task";
@@ -14,36 +13,21 @@ const TaskList: React.FC = () => {
         return saved ? JSON.parse(saved) : [];
     });
 
-    const [filteredTasks, setFilteredTasks] = useState<TaskType[]>([]);
     const [option, setOption] = useState<Option>('active')
     const [createForm, setCreateForm] = useState<boolean>(false)
+    const [counterText, setCounterText] = useState<string>('')
 
-    const getTasks = () => {
-        const initialTasks: string | null = localStorage.getItem('task-list');
-
-        if (initialTasks) {
-            const initialTasksArray: TaskType[] = JSON.parse(initialTasks)
-            setTasks(initialTasksArray)
-        }
-    }
-
-    const filterTasks = () => {
-        let filter: TaskType[];
+    const filteredTasks = useMemo(() => {
         switch (option) {
             case 'active':
-                filter = tasks.filter(item => item.status === 'active');
-                setFilteredTasks(filter)
-                break;
+                return tasks.filter(item => item.status === 'active');
             case 'completed':
-                filter = tasks.filter(item => item.status === 'completed');
-                setFilteredTasks(filter)
-                break;
-            case 'all':
-                setFilteredTasks(tasks)
-                break;
-
+                return tasks.filter(item => item.status === 'completed');
+            default:
+                return tasks;
         }
-    }
+    }, [option, tasks]);
+
 
     const createTask = (data: TaskType) => {
         setTasks(prev => [...prev, data])
@@ -84,30 +68,48 @@ const TaskList: React.FC = () => {
         setTasks(newTasks);
     }
 
-    useEffect(() => {
-        getTasks();
-    }, [])
+    const createCounter = () => {
+        const number = filteredTasks.length;
+        const lastDigit = number % 10;
+        const lastTwoDigits = number % 100;
+
+        if (number === 0) {
+            setCounterText('Задач нет');
+            return;
+        }
+
+        let text = '';
+
+        if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
+            text = `Осталось ${number} задач`;
+        } else if (lastDigit === 1) {
+            text = `Осталась ${number} задача`;
+        } else if ([2, 3, 4].includes(lastDigit)) {
+            text = `Осталось ${number} задачи`;
+        } else {
+            text = `Осталось ${number} задач`;
+        }
+
+        setCounterText(text);
+    };
 
     useEffect(() => {
         localStorage.setItem('task-list', JSON.stringify(tasks))
-
-
-
     }, [tasks])
 
     useEffect(() => {
-        filterTasks();
-    }, [option, tasks])
+        createCounter();
+    }, [option, filteredTasks])
 
     return (
         <>
             <TaskFilter option={option} changeOption={setOption} />
             <div className="task-list__counter">
-                Всего задач {filteredTasks.length}
+                {counterText}
             </div>
             {filteredTasks.length ?
                 <ul className="task-list">
-                    {filteredTasks.map(item =>
+                    {[...filteredTasks].reverse().map(item =>
                         <Task key={item.id}
                             id={item.id}
                             name={item.name}

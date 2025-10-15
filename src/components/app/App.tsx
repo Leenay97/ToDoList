@@ -1,13 +1,9 @@
 import './app.scss'
-import React from 'react';
 import TaskList from '../taskList/TaskList'
-import { useState, useEffect } from 'react';
-
-import type { Task, Option } from '../../types/types';
 
 
 
-const App: React.FC = () => {
+const App = () => {
     return (
         <div className="app">
             <div className="app__container">
