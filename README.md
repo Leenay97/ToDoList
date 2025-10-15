@@ -31,7 +31,7 @@ npm run dev
 - ⚛️ **React** — UI-библиотека  
 - 🟦 **TypeScript** — типизация  
 - ⚡ **Vite** — быстрая сборка и dev-сервер  
-- 💅 **SCSS / CSS Modules** — стилизация компонентов  
+- 💅 **SCSS / CSS ModuleFs** — стилизация компонентов  
 
 ---
 
