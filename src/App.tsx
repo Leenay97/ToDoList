@@ -1,5 +1,5 @@
-import './app.scss'
-import TaskList from '../taskList/TaskList'
+import './index.scss'
+import TaskList from './components/taskList/TaskList'
 
 
 
